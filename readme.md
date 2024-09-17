@@ -1,5 +1,28 @@
 To create a Node.js API with authentication, I'll guide you through setting up a basic API using Node.js, Express, and JWT (JSON Web Token) for authentication. We will also use MongoDB as the database for storing users, bcryptjs for password hashing, and dotenv for environment variables.
 
+```mermaid
+graph TD
+    A[User] -->|Requests Authentication| B[API Server]
+    B -->|Verifies Credentials| C[Database]
+    C -->|Returns User Data| B
+    B -->|Generates JWT| A
+    A -->|Sends JWT| B
+    B -->|Validates JWT| D[Authentication Service]
+
+    subgraph API Flow
+        B
+        D
+    end
+
+    subgraph Database
+        C
+    end
+
+    style API Flow fill:#f9f,stroke:#333,stroke-width:2px
+    style Database fill:#ccf,stroke:#333,stroke-width:2px
+
+```
+
 # Node.js Authentication API
 
 This is a simple Node.js API that implements user authentication using MongoDB, JWT, and Passport.js. It supports user registration, login, and protected routes.
